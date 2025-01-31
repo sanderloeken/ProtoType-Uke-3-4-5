@@ -1,0 +1,487 @@
+body {
+    background-color: #F0F0F0; 
+    color: #000000; 
+    font-family: 'Arial', sans-serif; 
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+/* Header */
+
+
+.header{
+    background-color: black;
+}
+
+/* display flex brukes her fordi av at det kan putte San og Der i samme linje, dere kan prøve å fjerne display å see hva som skjer */
+.HeadLogo{
+    display: flex;
+    margin-right: 20%;
+    gap: 7px;
+    justify-content: center;
+    align-items: center;
+
+    #San{
+        color: white;
+        text-shadow: 0 0 20px white ;
+        font-size: 40px;
+    }
+
+    #Der{
+        color: #dab033;
+        text-shadow: 0 0 20px #dab033;
+        font-size: 20px;
+    }
+}
+
+.nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    margin: 15px;
+    padding: 5px;
+    justify-content: left;
+    
+}
+
+.nav ul li {
+    margin: 5px;
+    padding: 1px;
+}
+
+.nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    font-size: 20px;
+}
+
+/* denne hover effecten er fra en tutorial som jeg syns var veldig kult her er linken til videoen:
+https://www.youtube.com/watch?v=0YFrGy_mzjY&t=580s 15:50 er der han gjør det
+det funket ikke først men når jeg tokk fekk men COpilot hjalp meg med det, jeg tokk fekk position, og tokk
+heller display block.*/
+.nav ul li a::after{
+    content: '';
+    width: 0;
+    height: 6px;
+    background: #dab033;
+    display: block;
+    bottom: -6px;
+    left: 0;
+    transition: 0.5s;
+    border-radius: 3px;
+}
+.nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* dette er det som gir mitt tekst glowen i teksten. grunnen til at jeg */
+/* grunnen til at jeg har 4 av dette er fordi at jeg gir mitt glow en range of motion
+som da vil bety at den glower flere ganger så styrken viser seg frem bedre, jeg prøvde å ha 1 av samme farge
+og styrken var veldig dårlig. 0 0 5px osv bestemmer hvor tykk glowen skal være */
+.neon-red {
+    color: #fcfcfc;
+    text-shadow: 0 0 5px #b87885, 0 0 10px #FF073A, 0 0 20px #FF073A, 0 0 40px #FF073A;
+}
+
+.neon-blue {
+    color: #f1f1f1;
+    text-shadow: 0 0 5px #378080, 0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 40px #00FFFF;
+}
+
+.neon-purple {
+    color: #cecece;
+    text-shadow: 0 0 5px #db9adb, 0 0 10px #DDA0DD, 0 0 20px #DDA0DD, 0 0 40px #DDA0DD;
+}
+
+#HR1{
+    border: 10px solid #ffffff;
+    margin: 0;
+}
+
+/* Hjem */
+
+/* Olav ga meg en tips om et bedre bakgrunn, blanding av 2-3-4 farger eller hvor mange du vil. så han hjalp meg, credits til han */
+.hjem{
+    display: grid;
+    height: 800px;
+    align-content: space-evenly;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(to bottom, #000000, #5a1a1a);
+}
+
+.innhold1 h3{
+    font-size: 50px;
+    color: white;
+}
+
+.innhold1 p{
+    font-size: 20px;
+    color: white;
+}
+
+.neon-red{
+    font-size: 25px;
+}
+
+.neon-blue{
+    font-size: 25px;
+}
+
+.neon-purple{
+    font-size: 25px;
+}
+
+/* Om Meg */
+/* i denne seksjonen har jeg brukte grid for føsrte gang, det grid gjør er at det deler ditt område i cuber så det blir lettere å place ting rundt i sitt egen rom
+grid colum betyr at jeg spesiferer hvor mitt tekst skal være i et horisontart linje, grid row bestemmer hvilken rad den skal være i, vertikart, så tenkt om det er 3 colums 3 rows.
+jeg sier at den skal colum 2 row 2 da blir det plassert i midten av 1 og 3 og i rad 2. span beskriver hvor mye koloner den skal bruke.*/
+
+.container2{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(3, 33%);
+    background: linear-gradient(to bottom, #000000, #5a1a1a);
+    color: white;
+    height: 800px;
+}
+
+.Hovinnhold2{
+    display: flex;
+    justify-content: center;
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 35px;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fade-in-out linear forwards;
+    animation-timeline: view();
+    animation-range: entry 25% cover 120%;
+}
+
+.BildeS{
+    display: flex;
+    grid-column: 1;
+    grid-row: 2;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fade-in-out linear forwards;
+    animation-timeline: view();
+    animation-range: entry 45% cover 100%;
+}
+
+/* box shadow funker akkurat som text shadow */
+.BildeS img{
+    border: #000000;
+    border-radius: 90PX;
+    border-style: solid;
+    border-width: 10px;
+    border-color: white;
+    background-color: bisque;
+    box-shadow: #c5bf9e 0px 0px 20px 10px;
+}
+
+.BildeL{
+    display: flex;
+    grid-column: 3;
+    grid-row: 2;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(50px);
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fade-in-out linear forwards;
+    animation-timeline: view();
+    animation-range: entry 45% cover 100%;
+}
+
+.BildeL img{
+    border: #000000;
+    border-radius: 90PX;
+    border-style: solid;
+    border-width: 10px;
+    border-color: white;
+    background-color: bisque;
+    box-shadow: #c5bf9e 0px 0px 20px 10px;
+}
+
+/* jeg skal forklare keyframes siden det er noe nytt jeg har lært om, transform: translateY gjør sånn at keyframe aktivere i Y aksen sier også hvordan den aktiveres,
+ når du scroller ned kort forklart. animation fade in out linear forwards sier hvordan keyframe animation er som, så når du scroller ned blir det fae in, når du forsetter
+ da blir det fade out. animation timeline view er sier ifra når brukeren har scrollet til elementen, dette hjelp da keyframe til å vite når den skal aktiveres. vi har vlagt view der er derfor den gjør slik, har ikke testet noe andre
+ animation range sier oss når den skal aktiveres, så her er det 45 entry og 100 cover, dette sier at hvis 45% av elementen er synlig da kommer keyframe opp (fade in).
+ 100 cover sier når keyframe skal stoppe å funke (fade out). du må stlye ditt keyframe bassert på hva du har som keyframe, her har vi fade-in-out så for å style keyframe må
+ vi skrive @keyframe fade-in-out.  */
+.innhold2{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    text-align: center;
+    grid-column: 2;
+    grid-row: 2;
+    margin: 5%;
+    padding: 3%;
+    border-color: #fdfdfd;
+    box-shadow: 0 0 15px #dfdfdf; 
+    background-color: rgb(17, 17, 16);
+    border-radius: 20px;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fade-in-out linear forwards;
+    animation-timeline: view();
+    animation-range: entry 35% cover 100%;
+}
+
+/* dette koden sier når elementen skal vises i fade animation og når den skal ut i fade animation. jeg har ikke lært hvordan
+man kan gjøre faden vises i saktere fart.*/
+@keyframes fade-in-out {
+    0%, 100% {
+        opacity: 0; 
+        transform: translateY(50px); 
+    }
+    45%, 55% {
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* Mitt Arbeid */
+
+.container3{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(3, 33%);
+    color: white;
+    height: 800px;
+    background: linear-gradient(to bottom, #000000, #5a1a1a);
+}
+
+.Hovinnhold3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 20px;
+}
+
+/* Transition sier hvor langt tid det tar før webdesign:hover viser seg.*/
+.Webdesign{
+    display: flexbox;
+    grid-column: 1;
+    grid-row: 2;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    transition: 1s;
+    margin: 5%;
+    border: #ffffff;
+    border-style: solid;
+}
+
+/* det transfrom scale gjør er at den velger hvor stor mitt element skal være når jeg har min mus over teksten.
+grunnen til at jeg har background her og ikke i linjen over er fordi at når jeg hover over denne teksten da kommer fargen.
+box shadow gir bare område glow. fikk inspirasjon av leander. */
+.Webdesign:hover {
+    border-color: #fdfdfd;
+    box-shadow: 0 0 15px #dfdfdf; 
+    transform: scale(1.05); 
+    background-color: rgb(17, 17, 16);
+    border-radius: 20px;
+}
+
+/* her har jeg en kode som gjør at min <p> ikke viser seg frem før du bruker hover. */
+.Webdesign p{
+    opacity: 0;
+    transition: 1s;
+}
+
+.Webdesign:hover p{
+    opacity: 1;
+}
+
+
+.Programmering{
+    display: flexbox;
+    grid-column: 2;
+    grid-row: 2;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    transition: 1s;
+    margin: 5%;
+    border: #ffffff;
+    border-style: solid;
+}
+
+.Programmering:hover {
+    border-color: #fdfdfd;
+    box-shadow: 0 0 15px #dfdfdf; 
+    transform: scale(1.05); 
+    background-color: rgb(17, 17, 16);
+    border-radius: 20px;
+}
+
+.Programmering p{
+    opacity: 0;
+    transition: 1s;
+}
+
+.Programmering:hover p{
+    opacity: 1;
+}
+
+.Modeler{
+    display: flexbox;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    grid-column: 3;
+    grid-row: 2;
+    transition: 1s;
+    margin: 5%;
+    border: white;
+    border-style: solid;
+}
+
+.Modeler:hover {
+    border-color: #fdfdfd;
+    box-shadow: 0 0 15px #dfdfdf; 
+    transform: scale(1.05); 
+    background-color: rgb(17, 17, 16);
+    border-radius: 20px;
+    
+}
+
+.Modeler p{
+    opacity: 0;
+    transition: 1s;
+}
+
+.Modeler:hover p{
+    opacity: 1;
+} 
+
+/* Erfaring */
+
+.container4{
+    color: white;
+    height: 800px;
+    background: linear-gradient(to bottom, #000000, #5a1a1a);
+}
+
+.innhold4{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(4, 40%);
+    color: white;
+    justify-content: center;
+    align-items: center;
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 20px;
+}
+
+.innhold4 h3{
+    display: flex;
+    font-size: 50px;
+    grid-column: 2;
+    grid-row: 1;
+    justify-content: center;
+    align-self: first baseline;
+}
+
+.innhold4 p{
+    display: flex;
+    font-size: 20px;
+    grid-column: 2;
+    grid-row: 1;
+    justify-content: center;
+    text-align: center;
+    align-self: last baseline;
+}
+
+.Bilde1{
+    display: flex;
+    grid-column: 1;
+    grid-row: 3;
+    justify-content: center;
+}
+.Bilde1 img{
+    border: #000000;
+    border-radius: 90PX;
+    border-style: solid;
+    border-width: 10px;
+    border-color: white;
+    background-color: bisque;
+    box-shadow: #c5bf9e 0px 0px 20px 10px;
+    width: 200px;
+}
+
+.Bilde2{
+    display: flex;
+    grid-column: 2;
+    grid-row: 3;
+    justify-content: center;
+}
+
+.Bilde2 img{
+    border: #000000;
+    border-radius: 90PX;
+    border-style: solid;
+    border-width: 10px;
+    border-color: white;
+    background-color: bisque;
+    box-shadow: #c5bf9e 0px 0px 20px 10px;
+    width: 200px;
+}
+
+.Bilde3{
+    display: flex;
+    grid-column: 3;
+    grid-row: 3;
+    justify-content: center;
+}
+
+.Bilde3 img{
+    border: #000000;
+    border-radius: 90PX;
+    border-style: solid;
+    border-width: 10px;
+    border-color: white;
+    background-color: bisque;
+    box-shadow: #c5bf9e 0px 0px 20px 10px;
+    width: 200px;
+}
+
+/* Kontakt */
+
+.container5{
+    display: grid;
+    color: white;
+    height: 400px;
+    background-color: black;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.innhold5 h2{
+    font-size: 50px;
+}
+
